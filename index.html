@@ -3,7 +3,42 @@
   <head>
 	<title>Automata</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link href="styles.css" rel="stylesheet">
 </head>
+	<body>
+		<div class="container automata">
+			<div class="bal" id="bal">
+				
+			</div>
+			<div class="jobb">
+				<div class="kepernyo" id="kepernyo">
+				
+				</div>
+				<div class="gombok" id="gombok"> 
+				
+				</div>
+				<button>OK</button>
+			</div>
+		</div>
+
+
+		<script>
+			//gombok létrehozása és kezelése
+			let gomb_tarolo=document.getElementById("gombok");
+			for (let i=1; i<=9; i++){
+			gomb_tarolo.innerHTML+= '<button onclick="katt('+i+')">'+i+'</button>';
+			}
+			
+			function katt(szam){
+			//alert(szam);
+			document.getElementById("kepernyo").innerHTML=szam;
+			}
+			//üdítők felpakolása
+			let uditok=document.getElementById("bal");
+			for (let i=0; i<9; i++){
+			uditok.innerHTML+= '<img src="cola.jpg">';
+			}
+		</script>
+	</body>
+</html>
