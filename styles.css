@@ -51,7 +51,29 @@
 	margin-bottom:5px;
 	height:40px;
 }
-.bal img{
+.bal div{
 	width:calc(100% / 3);
-	height:calc(100% / 3);
+	float: left;
+	text-align: center;
+}
+.bal div img{
+	width: 100%;
+
+}
+.tarolo{
+	width:90%;
+	height: 100px;
+	background-color:lightgray;
+	margin:auto;
+	margin-top: 100px;
+	border-radius: 10px;
+}
+.tarolo img{
+	height: 100%;
+	transform: rotate(90deg);
+	display: block;
+	margin: auto;
+}
+#penz{
+	float: right;
 }

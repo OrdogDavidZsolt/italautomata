@@ -1,44 +1,70 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
 	<title>Automata</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link href="styles.css" rel="stylesheet">
 </head>
-	<body>
-		<div class="container automata">
-			<div class="bal" id="bal">
-				
-			</div>
-			<div class="jobb">
-				<div class="kepernyo" id="kepernyo">
-				
-				</div>
-				<div class="gombok" id="gombok"> 
-				
-				</div>
-				<button>OK</button>
-			</div>
+
+<body>
+	<div id="penz"></div>
+	<div class="container automata">
+		<div class="bal" id="bal">
+
 		</div>
+		<div class="jobb">
+			<div class="kepernyo" id="kepernyo">
+
+			</div>
+			<div class="gombok" id="gombok">
+
+			</div>
+			<button onclick="vásárlás()">OK</button>
+
+			<div class="tarolo" id="tarolo"></div>
+		</div>
+	</div>
 
 
-		<script>
-			//gombok létrehozása és kezelése
-			let gomb_tarolo=document.getElementById("gombok");
-			for (let i=1; i<=9; i++){
-			gomb_tarolo.innerHTML+= '<button onclick="katt('+i+')">'+i+'</button>';
+	<script>
+		//gombok létrehozása és kezelése
+		let gomb_tarolo = document.getElementById("gombok");
+		let uditok = document.getElementById("bal");
+		let udito_kepek = ["apenta.jpg", "aqua.jpg", "cocacola.png", "cola.jpg", "hellkave.jpg", "kinley.jpg"];
+		let udito_arak = [150, 280, 300, 250, 270, 600];
+		let penz=2000;
+		document.getElementById("penz").innerHTML=penz+" Ft";
+		let kivalasztott = -1;
+
+		for (let i = 1; i <= 9; i++) {
+			gomb_tarolo.innerHTML += '<button onclick="katt(' + i + ')">' + i + '</button>';
+		}
+
+		function katt(szam) {
+
+			document.getElementById("kepernyo").innerHTML = szam;
+			kivalasztott = szam;
+		}
+
+		function vásárlás() {
+			if (udito_kepek[kivalasztott - 1] == undefined) { document.getElementById("kepernyo").innerHTML = "elfogyott"; }
+			else {
+				//alert("megvetted a" + udito_kepek[kivalasztott - 1] + "számú üdítőt");
+				if (penz-udito_arak[kivalasztott-1]<0){document.getElementById("kepernyo").innerHTML = "Túl drága";}
+				else {penz-= udito_arak[kivalasztott-1];
+				document.getElementById("penz").innerHTML=penz+" Ft";
+				document.getElementById("tarolo").innerHTML = '<img src="' + udito_kepek[kivalasztott - 1] + '">';}
 			}
-			
-			function katt(szam){
-			//alert(szam);
-			document.getElementById("kepernyo").innerHTML=szam;
-			}
-			//üdítők felpakolása
-			let uditok=document.getElementById("bal");
-			for (let i=0; i<9; i++){
-			uditok.innerHTML+= '<img src="cola.jpg">';
-			}
-		</script>
-	</body>
+		}
+
+		//üdítők felpakolása
+		for (let i = 0; i <= 5; i++) {
+			uditok.innerHTML += '<div><img src="' + udito_kepek[i] + '">' + (i + 1) + '<br>' +udito_arak[i]+" Ft"+'</div>';
+		}
+	</script>
+</body>
+
 </html>
